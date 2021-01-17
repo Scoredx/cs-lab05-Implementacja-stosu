@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stos;
 using System;
 
@@ -79,6 +79,51 @@ namespace UnitTestProjectStos
 
             char c = stos.Peek;
         }
-    }
 
+        // TrimExcess() ==> throw StosEmptyException
+        [TestMethod]
+        [ExpectedException(typeof(StosEmptyException))]
+        public void TrimExcess_PustegoStosu_StosEmptyException()
+        {
+            var f = new StosWTablicy<int>();
+            f.TrimExcess();
+        }
+
+        // TrimExcess() valid
+        [TestMethod]
+        [DataRow(8)]
+        [DataRow(15)]
+        [DataRow(3)]
+        [DataRow(59)]
+        [DataRow(200)]
+        [DataRow(130)]
+        public void TrimExcess_Test_Method(int elements)
+        {
+            var g = new StosWTablicy<int>(elements);
+            for (int i = 0; i < elements; ++i)
+            {
+                g.Push(i);
+            }
+            g.TrimExcess();
+            Assert.AreEqual(elements, (int)Math.Floor(g.GetTabLength() * 0.9));
+        }
+
+        [TestMethod]
+        public void Indexer_Test_Tablica()
+        {
+            stos = new StosWTablicy<char>();
+            var element = RandomElement;
+            stos.Push(element);
+            Assert.AreEqual(stos[0], element);
+        }
+
+        [TestMethod]
+        public void Indekser_Test_Lista()
+        {
+            stos = new StosWLiscie<char>();
+            var element = RandomElement;
+            stos.Push(element);
+            Assert.AreEqual(stos[0], element);
+        }
+    }
 }

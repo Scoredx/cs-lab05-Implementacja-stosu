@@ -1,21 +1,22 @@
-ï»¿namespace Stos
+namespace Stos
 {
     /// <summary>
     /// Interfejs stosu (generyczny)
     /// </summary>
     /// <remarks>
-    /// ZaÅ‚oÅ¼enia:
+    /// Za³o¿enia:
     /// 1. Po utworzeniu stos jest pusty
-    /// 2. Stos jest pojemnikiem o nieograniczonej pojemnoÅ›ci
-    /// 3. PrÃ³ba zdjÄ™cia lub odczytania szczytowego elementu ze stosu pustego zgÅ‚asza wyjÄ…tek
-    /// 4. Push oraz Pop sÄ… czynnoÅ›ciami wzajemnie odwrotnymi
+    /// 2. Stos jest pojemnikiem o nieograniczonej pojemnoœci
+    /// 3. Próba zdjêcia lub odczytania szczytowego elementu ze stosu pustego zg³asza wyj¹tek
+    /// 4. Push oraz Pop s¹ czynnoœciami wzajemnie odwrotnymi
     /// Dodatkowe:
-    /// Stos moÅ¼na przeglÄ…daÄ‡ bez moÅ¼liwoÅ›ci zmiany elementÃ³w (read-only)
+    /// Stos mo¿na przegl¹daæ bez mo¿liwoœci zmiany elementów (read-only)
     /// </remarks>
-    /// <typeparam name="T">dowolny typ wartoÅ›ciowy lub referencyjny</typeparam>
+    /// <typeparam name="T">dowolny typ wartoœciowy lub referencyjny</typeparam>
+    /// 
     public interface IStos<T>
     {
-        //w interfejsie nie deklaruje siÄ™ konstruktora
+        //w interfejsie nie deklaruje siê konstruktora
 
         //wstawia element typu T na stos
         void Push(T value);
@@ -26,16 +27,17 @@
         //zdejmuje szczytowy element ze stosu
         T Pop();
 
-        //zwraca liczbÄ™ elementÃ³w na stosie
+        //zwraca liczbê elementów na stosie
         int Count { get; }
 
-        //zwraca true, jeÅ›li stos jest pusty, a false w przeciwnym przypadku
+        //zwraca true, jeœli stos jest pusty, a false w przeciwnym przypadku
         bool IsEmpty { get; }
 
-        //oprÃ³Å¼nia stos
+        //opró¿nia stos
         void Clear();
 
         //kopiuje i eksportuje stos do tablicy
         T[] ToArray();
+        T this[int index] { get; }
     }
 }

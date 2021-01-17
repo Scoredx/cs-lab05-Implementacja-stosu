@@ -11,8 +11,9 @@ namespace Stos
             s.Push("aa");
             s.Push("xx");
             foreach (var x in s.ToArray())
+            {
                 Console.WriteLine(x);
-
+            }
             Console.WriteLine();
         }
     }
